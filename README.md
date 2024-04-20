@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Project Title: Reactive Web UI with S3 Upload and DynamoDB Integration
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+This project is a responsive web UI built using ReactJS. It features a text input field and a file input field. Upon submission, the file is uploaded to Amazon S3, and the inputs along with S3 path are saved in DynamoDB. Additionally, a script is triggered on an EC2 instance to process the uploaded file.
 
-## Available Scripts
+## Project Setup
 
-In the project directory, you can run:
+### Frontend Setup:
+1. Clone this repository.
+2. Navigate to the `frontend` directory.
+3. Install dependencies using `npm install`.
+4. Start the development server using `npm start`.
 
-### `npm start`
+### Backend Setup:
+1. Set up an API Gateway and Lambda function to handle requests from the frontend.
+2. Create a DynamoDB table named `FileTable` with attributes: `id`, `input_text`, `input_file_path`, `output_file_path`.
+3. Set up an S3 bucket to store input and output files.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### AWS Configuration (Frontend):
+1. Open `src/App.js`.
+2. Under the `AWS.config.update({ ... })` section, replace `"accessKeyId"` and `"secretAccessKey"` with your AWS Access Key ID and Secret Access Key respectively.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Usage
 
-### `npm test`
+1. **Input Form:**
+    - Enter text into the text input field.
+    - Select a file using the file input field.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Submission:**
+    - Click the submit button to initiate the upload process.
 
-### `npm run build`
+## Workflow
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Upload to S3:**
+    - Upon submission, the file is uploaded directly to S3 from the browser.
+    - S3 path: `[BucketName]/[InputFile].txt`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Save Inputs to DynamoDB:**
+    - The inputs (text input, input file path) along with the S3 path are saved in DynamoDB `FileTable`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Trigger Script on EC2:**
+    - Upon successful upload to S3 and DynamoDB entry, a script is triggered on an EC2 instance via DynamoDB event.
 
-### `npm run eject`
+4. **Script Execution:**
+    - A new VM is automatically created.
+    - The script is downloaded from S3 to the VM.
+    - The script is executed in the VM.
+    - Inputs are retrieved from DynamoDB FileTable by ID.
+    - The input file is downloaded from S3 to the VM.
+    - The input text is appended to the input file and saved as `[OutputFile].txt`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+5. **Upload Output to S3:**
+    - The output file is uploaded to S3.
+    - S3 path: `[BucketName]/[OutputFile].txt`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+6. **Save Outputs to DynamoDB:**
+    - The output file path along with other details are saved in DynamoDB `FileTable`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+7. **Terminate VM:**
+    - The VM is automatically terminated after the process is completed.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Notes
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Ensure proper IAM permissions are set for accessing S3, DynamoDB, EC2, and Lambda.
+- Update the AWS region and other configurations as needed in the Lambda function, EC2 instance, and S3 bucket.
+- It is recommended to encrypt sensitive data and manage access keys securely.
