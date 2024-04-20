@@ -34,7 +34,7 @@ This project is a responsive web UI built using ReactJS. It features a text inpu
 
 1. **Upload to S3:**
     - Upon submission, the file is uploaded directly to S3 from the browser.
-    - S3 path: `[InputFile].txt`
+    - S3 path: `[BucketName]/[InputFile].txt`
 
 2. **Save Inputs to DynamoDB:**
     - The inputs (text input, input file path) along with the S3 path are saved in DynamoDB `FileTable`.
@@ -52,7 +52,7 @@ This project is a responsive web UI built using ReactJS. It features a text inpu
 
 5. **Upload Output to S3:**
     - The output file is uploaded to S3.
-    - S3 path: `new [OutputFile].txt`
+    - S3 path: `[BucketName]/[OutputFile].txt`
 
 6. **Save Outputs to DynamoDB:**
     - The output file path along with other details are saved in DynamoDB `FileTable`.
