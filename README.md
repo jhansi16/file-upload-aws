@@ -65,3 +65,20 @@ This project is a responsive web UI built using ReactJS. It features a text inpu
 - Ensure proper IAM permissions are set for accessing S3, DynamoDB, EC2, and Lambda.
 - Update the AWS region and other configurations as needed in the Lambda function, EC2 instance, and S3 bucket.
 - It is recommended to encrypt sensitive data and manage access keys securely.
+
+<img width="1440" alt="Screenshot 2024-04-20 at 2 02 49 PM" src="https://github.com/jhansi16/file-upload-aws/assets/62535629/0db91d93-3f5c-4902-a708-5faf82bac5db">
+
+<img width="1440" alt="Screenshot 2024-04-20 at 2 03 06 PM" src="https://github.com/jhansi16/file-upload-aws/assets/62535629/1c7d7dd4-c8fa-4a66-a1c2-d6abbb2c7371">
+
+<img width="1440" alt="Screenshot 2024-04-20 at 2 03 46 PM" src="https://github.com/jhansi16/file-upload-aws/assets/62535629/7fd4f942-3a62-4327-b898-0c0e79e9ea15">
+
+<img width="1440" alt="Screenshot 2024-04-20 at 2 04 07 PM" src="https://github.com/jhansi16/file-upload-aws/assets/62535629/625ebfd8-86e7-4108-a5cc-83c19b61ce12">
+
+<img width="1440" alt="Screenshot 2024-04-20 at 2 05 01 PM" src="https://github.com/jhansi16/file-upload-aws/assets/62535629/960dced0-c342-448b-a883-02e928bc9683">
+
+<img width="1440" alt="Screenshot 2024-04-20 at 2 06 59 PM" src="https://github.com/jhansi16/file-upload-aws/assets/62535629/8be42af2-6797-4da6-8d32-51d4a71c83fc">
+
+<img width="1440" alt="Screenshot 2024-04-20 at 2 07 13 PM" src="https://github.com/jhansi16/file-upload-aws/assets/62535629/8ac1d3b4-241b-44da-8471-997d0f04cdf6">
+
+
+
