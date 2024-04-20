@@ -15,6 +15,7 @@ This project is a responsive web UI built using ReactJS. It features a text inpu
 1. Set up an API Gateway and Lambda function to handle requests from the frontend.
 2. Create a DynamoDB table named `FileTable` with attributes: `id`, `input_text`, `input_file_path`, `output_file_path`.
 3. Set up an S3 bucket to store input and output files.
+4. Add the `lambda_function.py` code to your Lambda function.
 
 ### AWS Configuration (Frontend):
 1. Open `src/App.js`.
