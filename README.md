@@ -80,5 +80,7 @@ This project is a responsive web UI built using ReactJS. It features a text inpu
 
 <img width="1440" alt="Screenshot 2024-04-20 at 2 07 13 PM" src="https://github.com/jhansi16/file-upload-aws/assets/62535629/8ac1d3b4-241b-44da-8471-997d0f04cdf6">
 
+## References
 
+[upload file into s3 bucket](https://medium.com/how-to-react/how-to-upload-files-on-an-s3-bucket-in-react-js-97a3ccd519d1)
 
